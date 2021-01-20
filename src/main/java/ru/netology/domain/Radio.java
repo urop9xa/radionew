@@ -17,13 +17,20 @@ public class Radio {
         this.currentRadioStation = currentRadioStation;
     }
     public void changeOnPreviousRadioStation (int currentRadioStation) {
+        if (currentRadioStation > 0){
+            this.currentRadioStation--;
+        }
+
         if (currentRadioStation == 0) {
             this.currentRadioStation = 9;
         }
     }
 
     public void changeOnNextRadioStation (int currentRadioStation) {
-        if (currentRadioStation > 9) {
+        if (currentRadioStation < 9) {
+            this.currentRadioStation++;
+        }
+        if (currentRadioStation == 9) {
             this.currentRadioStation = 0;
         }
     }
@@ -41,12 +48,18 @@ public class Radio {
         }
         this.volume = volume;
     }
-    public void setMaxVolume (int volume) {
+    public void volumeUpForOne (int volume) {
+        if (volume < 10) {
+            this.volume ++;
+        }
         if (volume == 10) {
             this.volume = volume;
         }
     }
-    public void setMinVolume (int volume) {
+    public void volumeDownForOne (int volume) {
+        if (volume > 0){
+            this.volume --;
+        }
         if (volume == 0) {
             this.volume = volume;
         }
