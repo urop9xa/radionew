@@ -13,15 +13,23 @@ class RadioTest {
         assertEquals(expected, radio.getCurrentRadioStation());
     }
     @Test
-    void shouldSetCurrentRadioStationBackToZero () {
+    void shouldSetCurrentRadioStationBackIfStationIsUnderMin () {
         Radio radio = new Radio(10,10,40,100);
         int currentRadioStation = -1;
         radio.setCurrentRadioStation(currentRadioStation);
-        int expected = 0;
+        int expected = 10;
         assertEquals(expected, radio.getCurrentRadioStation());
 
     }
+    @Test
+    void shouldSetCurrentRadioStationBackIfStationIsMoreThanMax () {
+        Radio radio = new Radio(10,10,40,100);
+        int currentRadioStation = 11;
+        radio.setCurrentRadioStation(currentRadioStation);
+        int expected = 10;
+        assertEquals(expected, radio.getCurrentRadioStation());
 
+    }
     @Test
     void shouldChangeOnPreviousRadioStationIfStationIsMin() {
         Radio radio = new Radio(10,10,40,100);
@@ -67,17 +75,18 @@ class RadioTest {
 
     @Test
     void shouldSetVolumeIfVolumeIsOverMax() {
-        Radio radio = new Radio(10,10,101,100);
+        Radio radio = new Radio(10,10,100,100);
         int volume = 101;
         radio.setVolume(volume);
-        int expected = 0;
+        int expected = 100;
         assertEquals(expected, radio.getVolume());
     }
 
     @Test
     void shouldSetVolumeIfVolumeIsUnderMin() {
-        Radio radio = new Radio(10,10,-1,100);
-        radio.setVolume(0);
+        Radio radio = new Radio(10,10,0,100);
+        int volume = -1;
+        radio.setVolume(volume);
         int expected = 0;
         assertEquals(expected, radio.getVolume());
     }
