@@ -7,16 +7,14 @@ import static org.junit.jupiter.api.Assertions.*;
 class RadioTest {
 
     @Test
-    void shouldSetCurrentRadioStationBackToZero () {
-        Radio radio = new Radio();
-        int currentRadioStation = 10;
-        radio.setCurrentRadioStation(currentRadioStation);
-        int expected = 0;
+    void shouldSetCurrentRadioStation () {
+        Radio radio = new Radio(10, 10,40,100);
+        int expected = 10;
         assertEquals(expected, radio.getCurrentRadioStation());
     }
     @Test
-    void shouldSetCurrentRadioStation () {
-        Radio radio = new Radio();
+    void shouldSetCurrentRadioStationBackToZero () {
+        Radio radio = new Radio(10,10,40,100);
         int currentRadioStation = -1;
         radio.setCurrentRadioStation(currentRadioStation);
         int expected = 0;
@@ -26,18 +24,18 @@ class RadioTest {
 
     @Test
     void shouldChangeOnPreviousRadioStationIfStationIsMin() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(10,10,40,100);
         int currentRadioStation = 0;
         radio.setCurrentRadioStation(currentRadioStation);
         radio.changeOnPreviousRadioStation();
-        int expected = 9;
+        int expected = 10;
         assertEquals(expected, radio.getCurrentRadioStation());
     }
 
     @Test
     void shouldNotChangeOnNextRadioStationIfStationIsMax() {
-        Radio radio = new Radio();
-        int currentRadioStation = 9;
+        Radio radio = new Radio(10,10,40,100);
+        int currentRadioStation = 10;
         radio.setCurrentRadioStation(currentRadioStation);
         radio.changeOnNextRadioStation();
         int expected = 0;
@@ -47,18 +45,18 @@ class RadioTest {
 
     @Test
     void shouldChangeOnPreviousRadioStation() {
-        Radio radio = new Radio();
-        int currentRadioStation = 9;
+        Radio radio = new Radio(10,10,40,100);
+        int currentRadioStation = 1;
         radio.setCurrentRadioStation(currentRadioStation);
         radio.changeOnPreviousRadioStation();
-        int expected = 8;
+        int expected = 0;
         assertEquals(expected, radio.getCurrentRadioStation());
     }
 
 
     @Test
     void shouldChangeOnNextRadioStation() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(10,10,40,100);
         int currentRadioStation = 8;
         radio.setCurrentRadioStation(currentRadioStation);
         radio.changeOnNextRadioStation();
@@ -69,8 +67,8 @@ class RadioTest {
 
     @Test
     void shouldSetVolumeIfVolumeIsOverMax() {
-        Radio radio = new Radio();
-        int volume = 11;
+        Radio radio = new Radio(10,10,101,100);
+        int volume = 101;
         radio.setVolume(volume);
         int expected = 0;
         assertEquals(expected, radio.getVolume());
@@ -78,26 +76,25 @@ class RadioTest {
 
     @Test
     void shouldSetVolumeIfVolumeIsUnderMin() {
-        Radio radio = new Radio();
-        int volume = -1;
-        radio.setVolume(volume);
+        Radio radio = new Radio(10,10,-1,100);
+        radio.setVolume(0);
         int expected = 0;
         assertEquals(expected, radio.getVolume());
     }
 
     @Test
     void shouldNotChangeVolumeIfVolumeIsMax() {
-        Radio radio = new Radio();
-        int volume = 10;
+        Radio radio = new Radio(10,10,40,100);
+        int volume = 100;
         radio.setVolume(volume);
         radio.volumeUpForOne();
-        int expected = 10;
+        int expected = 100;
         assertEquals(expected, radio.getVolume());
     }
 
     @Test
     void shouldNotChangeVolumeIfVolumeIsMin() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(10,10,40,100);
         int volume = 0;
         radio.setVolume(volume);
         radio.volumeDownForOne();
@@ -109,7 +106,7 @@ class RadioTest {
 
     @Test
     void volumeUpForOne() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(10,10,40,100);
         int volume = 8;
         radio.setVolume(volume);
         radio.volumeUpForOne();
@@ -119,7 +116,7 @@ class RadioTest {
 
     @Test
     void volumeDownForOne() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(10,10,40,100);
         int volume = 7;
         radio.setVolume(volume);
         radio.volumeDownForOne();
