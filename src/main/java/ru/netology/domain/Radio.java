@@ -20,16 +20,15 @@ public class Radio {
 
 
     public void changeOnPreviousRadioStation() {
-        if (currentRadioStation > 0) {
-            this.currentRadioStation--;
-        }
         if (currentRadioStation == 0) {
             this.currentRadioStation = 9;
+            return;
         }
+        this.currentRadioStation--;
     }
 
-    public void changeOnNextRadioStation() {
 
+    public void changeOnNextRadioStation() {
         if (currentRadioStation == 9) {
             this.currentRadioStation = 0;
             return;
