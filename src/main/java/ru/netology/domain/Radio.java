@@ -2,22 +2,27 @@ package ru.netology.domain;
 
 public class Radio {
     private int currentRadioStation;
+    private int volume;
 
     public int getCurrentRadioStation() {
+
         return currentRadioStation;
     }
 
     public void setCurrentRadioStation(int currentRadioStation) {
-        if (currentRadioStation > 9){
+        if (currentRadioStation > 9) {
             return;
         }
-        if (currentRadioStation < 0){
+        if (currentRadioStation < 0) {
             return;
         }
+
         this.currentRadioStation = currentRadioStation;
     }
-    public void changeOnPreviousRadioStation (int currentRadioStation) {
-        if (currentRadioStation > 0){
+
+
+    public void changeOnPreviousRadioStation() {
+        if (currentRadioStation > 0) {
             this.currentRadioStation--;
         }
 
@@ -26,14 +31,17 @@ public class Radio {
         }
     }
 
-    public void changeOnNextRadioStation (int currentRadioStation) {
+    public void changeOnNextRadioStation() {
+
         if (currentRadioStation < 9) {
-            this.currentRadioStation++;
+            this.currentRadioStation ++;
+            return;
         }
         if (currentRadioStation == 9) {
             this.currentRadioStation = 0;
         }
     }
+
 
     public int getVolume() {
         return volume;
@@ -48,21 +56,24 @@ public class Radio {
         }
         this.volume = volume;
     }
-    public void volumeUpForOne (int volume) {
-        if (volume < 10) {
-            this.volume ++;
-        }
+
+    public void volumeUpForOne() {
+
         if (volume == 10) {
             this.volume = volume;
         }
-    }
-    public void volumeDownForOne (int volume) {
-        if (volume > 0){
-            this.volume --;
+        if (volume < 10) {
+            this.volume++;
         }
+    }
+
+    public void volumeDownForOne() {
         if (volume == 0) {
             this.volume = volume;
         }
+        if (volume > 0) {
+            this.volume--;
+        }
     }
-    private int volume;
+
 }

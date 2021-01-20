@@ -10,7 +10,7 @@ class RadioTest {
         Radio radio = new Radio();
         int currentRadioStation = 9;
         radio.setCurrentRadioStation(currentRadioStation);
-        radio.changeOnNextRadioStation(currentRadioStation);
+        radio.changeOnNextRadioStation();
         int expected = 0;
         assertEquals(expected, radio.getCurrentRadioStation());
     }
@@ -39,7 +39,7 @@ class RadioTest {
         int currentRadioStation = 7;
         radio.setCurrentRadioStation(currentRadioStation);
         int expected = 6;
-        radio.changeOnPreviousRadioStation(currentRadioStation);
+        radio.changeOnPreviousRadioStation();
         assertEquals(expected, radio.getCurrentRadioStation());
     }
 
@@ -49,7 +49,7 @@ class RadioTest {
         Radio radio = new Radio();
         int currentRadioStation = 0;
         radio.setCurrentRadioStation(currentRadioStation);
-        radio.changeOnPreviousRadioStation(currentRadioStation);
+        radio.changeOnPreviousRadioStation();
         int expected = 9;
         assertEquals(expected, radio.getCurrentRadioStation());
     }
@@ -57,19 +57,19 @@ class RadioTest {
     @Test
     void shouldChangeOnNextRadioStationIfStationIsMax() {
         Radio radio = new Radio();
-        int currentRadioStation = 10;
+        int currentRadioStation = 9;
         radio.setCurrentRadioStation(currentRadioStation);
-        radio.changeOnNextRadioStation(currentRadioStation);
+        radio.changeOnNextRadioStation();
         int expected = 0;
         assertEquals(expected, radio.getCurrentRadioStation());
     }
     @Test
     void shouldChangeOnNextRadioStation () {
         Radio radio = new Radio ();
-        int currentRadioStation = 5;
+        int currentRadioStation = 8;
         radio.setCurrentRadioStation(currentRadioStation);
-        radio.changeOnNextRadioStation(currentRadioStation);
-        int expected = 6;
+        radio.changeOnNextRadioStation();
+        int expected = 9;
         assertEquals(expected, radio.getCurrentRadioStation());
     }
 
@@ -95,7 +95,7 @@ class RadioTest {
         Radio radio = new Radio();
         int volume = 10;
         radio.setVolume(volume);
-        radio.volumeUpForOne(volume);
+        radio.volumeUpForOne();
         int expected = 10;
         assertEquals(expected, radio.getVolume());
     }
@@ -104,7 +104,7 @@ class RadioTest {
         Radio radio = new Radio();
         int volume = 0;
         radio.setVolume(volume);
-        radio.volumeDownForOne(volume);
+        radio.volumeDownForOne();
         int expected = 0;
         assertEquals(expected, radio.getVolume());
 
@@ -116,7 +116,7 @@ class RadioTest {
         Radio radio = new Radio();
         int volume = 8;
         radio.setVolume(volume);
-        radio.volumeUpForOne(volume);
+        radio.volumeUpForOne();
         int expected = 9;
         assertEquals(expected, radio.getVolume());
     }
@@ -126,7 +126,7 @@ class RadioTest {
         Radio radio = new Radio();
         int volume = 7;
         radio.setVolume(volume);
-        radio.volumeDownForOne(volume);
+        radio.volumeDownForOne();
         int expected = 6;
         assertEquals(expected, radio.getVolume());
 
