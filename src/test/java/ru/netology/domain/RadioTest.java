@@ -128,14 +128,4 @@ class RadioTest {
 
     }
 
-    @Test
-    void changeOnNextRadioStation() {
-        Radio radio = new Radio();
-        int currentRadioStation = 8;
-        radio.setCurrentRadioStation(currentRadioStation);
-        radio.changeOnNextRadioStation();
-        int expected = 9;
-        assertEquals (expected, radio.getCurrentRadioStation());
-
-    }
 }
